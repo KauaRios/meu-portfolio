@@ -1,0 +1,147 @@
+body {
+    margin: 0; 
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #1a1a1a; 
+}
+
+.background-carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 1s ease-in-out; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.6); 
+    background-blend-mode: darken;
+    z-index: -1; 
+    opacity: 1;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.TITULO1{
+    color: #008080;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-weight: bold;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.Paragrafo1{
+    font-size: 18px;
+    text-align: center;
+    color: #f0f0f0;
+    margin: 20px auto 40px auto;
+    max-width: 800px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    padding: 0 15px;
+}
+
+.projects-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section-title {
+    color: #008080;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 1px black;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto; 
+    max-width: 400px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    color: #333;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: teal;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.skills-section {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.skills-container {
+    text-align: center;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: teal;
+    color: white;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.social-links a {
+    color: #8be9fd;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.minhafoto {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.foto-container {
+    display: flex;
+    justify-content: center;
+}
+
+.MyImage {
+    width: 200px;  /* Tamanho da foto */
+    height: 200px;
+    border-radius: 50%; /* Deixa redonda */
+    object-fit: cover;  /* Garante que a foto não estique */
+    cursor: pointer;    /* IMPRESCINDÍVEL: Mostra a mãozinha ao passar o mouse */
+    border: 4px solid teal; /* Uma borda para destaque */
+    transition: transform 0.2s; /* Efeito suave */
+}
+
+.MyImage:hover {
+    transform: scale(1.05); /* Aumenta um pouco ao passar o mouse */
+}
