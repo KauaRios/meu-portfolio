@@ -1,24 +1,32 @@
-body {
-    margin: 0; 
-    padding: 0;
-    font-family: sans-serif;
-    background-color: #1a1a1a; 
+/* --- CONFIGURAÇÕES GERAIS E VARIÁVEIS --- */
+:root {
+    --bg-color: #050a14;       /* Fundo do seu Kitty */
+    --neon-blue: #00aaff;      /* Azul Neon */
+    --glass-bg: rgba(5, 10, 20, 0.85); /* Fundo dos cards (escuro transparente) */
+    --text-color: #e0e6ed;
+    --border-color: rgba(0, 170, 255, 0.3);
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'JetBrains Mono', 'Courier New', monospace; /* Fonte mais "Hacker" */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* --- BACKGROUND --- */
 .background-carousel {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    transition: opacity 1s ease-in-out; 
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    transition: opacity 1s ease-in-out;
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(0, 0, 0, 0.6); 
-    background-blend-mode: darken;
-    z-index: -1; 
-    opacity: 1;
+    background-color: #000; 
+    z-index: -1;
+    opacity: 0.4; /* Deixei mais escuro para o texto brilhar */
+    filter: blur(3px); /* Desfoque leve no fundo para focar no conteúdo */
 }
 
 .content-wrapper {
@@ -28,130 +36,235 @@ body {
     padding-bottom: 50px;
 }
 
-.TITULO1{
-    color: #008080;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+/* --- TIPOGRAFIA E TÍTULOS --- */
+.TITULO1 {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.5); /* Efeito Neon */
     font-weight: bold;
     text-align: center;
     padding-top: 60px;
-}
-
-.Paragrafo1{
-    font-size: 18px;
-    text-align: center;
-    color: #f0f0f0;
-    margin: 20px auto 40px auto;
-    max-width: 800px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    padding: 0 15px;
-}
-
-.projects-section {
-    padding: 40px 20px;
-    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
 }
 
 .section-title {
-    color: #008080;
+    color: var(--neon-blue);
     margin-bottom: 30px;
-    text-shadow: 1px 1px 1px black;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: transparent; 
     display: inline-block;
     padding: 5px 15px;
-    border-radius: 5px;
+    border-bottom: 2px solid var(--neon-blue); /* Linha sutil embaixo */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+}
+
+/* --- CARD "SOBRE MIM" (Estilo Terminal) --- */
+.sobre-section {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.My-Card {
+    background: var(--glass-bg);
+    max-width: 700px;
+    width: 90%;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.1); /* Glow leve */
+    text-align: left;
+    backdrop-filter: blur(10px); /* Efeito Vidro */
+    position: relative;
+}
+
+/* Decoração do Terminal (Bolinhas) */
+.My-Card::before {
+    content: "● ● ●";
+    color: #555;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+/* Bolinhas coloridas fake via gradiente no texto */
+.My-Card::before {
+    background: linear-gradient(to right, #ff5f56, #ffbd2e, #27c93f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "● ● ●";
+}
+
+.My-Card h2 {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 1.8rem;
+}
+
+.My-Card p {
+    color: #a0a0a0;
+    line-height: 1.6;
+}
+
+/* Efeito de Digitação */
+.texto-animado {
+    color: var(--neon-blue);
+    font-weight: bold;
+}
+
+.cursor {
+    color: var(--neon-blue);
+    animation: piscar 0.8s infinite;
+}
+
+/* --- PROJETOS (Cards de Vidro) --- */
+.container-projetos {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+
 }
 
 .project-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background-color: rgba(10, 20, 30, 0.6); /* Escuro transparente */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     padding: 20px;
-    margin: 20px auto; 
-    max-width: 400px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s;
-    color: #333;
+    width: 300px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+   text-align: center;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue); /* Glow forte ao passar mouse */
+}
+
+.project-card h3 {
+    color: #fff;
+}
+
+.project-card p {
+    color: #aaa;
 }
 
 .project-link {
     display: inline-block;
     margin-top: 15px;
-    color: teal;
+    color: var(--neon-blue);
     text-decoration: none;
+    border: 1px solid var(--neon-blue);
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.project-link:hover {
+    background: var(--neon-blue);
+    color: #000;
     font-weight: bold;
+    box-shadow: 0 0 10px var(--neon-blue);
 }
 
-.skills-section {
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 50px;
-    
-    
-}
-
+/* --- SKILLS (Tags Tech) --- */
 .skills-container {
-    text-align: center;
-    
-    
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .skill-tag {
     display: inline-block;
-    background-color: teal;
-    color: white;
+    background: rgba(0, 170, 255, 0.1);
+    color: var(--neon-blue);
+    border: 1px solid var(--neon-blue);
     padding: 8px 15px;
-    margin: 5px;
-    border-radius: 20px;
+    margin: 6px;
+    border-radius: 4px; 
     font-size: 14px;
-    font-weight: 500;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    transform: transition;
-    
-}
-.skill-tag:hover {
-    background-color: #006666;
-    transform: scale(1.1);
+    transition: all 0.3s;
 }
 
+.skill-tag:hover {
+    background: var(--neon-blue);
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* --- FOTO --- */
+.MyImage {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+    filter: grayscale(20%); /* Um toque artístico */
+    transition: 0.5s;
+}
+
+.MyImage:hover {
+    transform: scale(1.05) rotate(5deg);
+    filter: grayscale(0%);
+    box-shadow: 0 0 30px var(--neon-blue);
+}
+
+/* --- FOOTER --- */
 footer {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    position: relative;
-    z-index: 1;
+    background-color: #02040a;
+    border-top: 1px solid rgba(0, 170, 255, 0.1);
+    color: #666;
+    padding: 40px 0;
 }
 
 .social-links a {
-    color: #8be9fd;
+    color: var(--neon-blue);
     text-decoration: none;
     margin: 0 10px;
+    font-size: 1.1rem;
+    transition: 0.3s;
 }
 
+.social-links a:hover {
+    text-shadow: 0 0 10px var(--neon-blue);
+    color: #fff;
+}
+
+@keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+
+.projects-section,
+.skills-section,
 .minhafoto {
     text-align: center;
-    margin-top: 30px;
+    width: 100%;
+}
+
+
+.skills-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto; 
+}
+
+
+footer {
+    text-align: center;
 }
 
 .foto-container {
     display: flex;
     justify-content: center;
-}
-
-.MyImage {
-    width: 200px;  /* Tamanho da foto */
-    height: 200px;
-    border-radius: 50%; /* Deixa redonda */
-    object-fit: cover;  /* Garante que a foto não estique */
-    cursor: pointer;    /* IMPRESCINDÍVEL: Mostra a mãozinha ao passar o mouse */
-    border: 4px solid teal; /* Uma borda para destaque */
-    transition: transform 0.2s; /* Efeito suave */
-}
-
-.MyImage:hover {
-    transform: scale(1.05); /* Aumenta um pouco ao passar o mouse */
+    margin-bottom: 20px;
 }

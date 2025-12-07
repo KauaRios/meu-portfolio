@@ -19,31 +19,57 @@ setInterval(function() {
 
 
 
-/* --- Parte da Foto de Perfil (Clique) --- */
-var myImageElement = document.getElementById('MyImage');
 
 
-var currentImageName = 'myfoto.png';
 
-myImageElement.onclick = function() {
-    
-    // 1. Se for a foto original, muda para a foto1
-    if (currentImageName === 'myfoto.png') {
-        currentImageName = 'foto1.png';
-        
-    // 2.  Se for a foto1, muda para a foto2
-    } else if (currentImageName === 'foto1.png') {
-        currentImageName = 'foto2.png';
-        
-    // 3. Se for a foto2, muda para a foto3
-    } else if (currentImageName === 'foto2.png') {
-        currentImageName = 'foto3.png';
-        
-    // 4. Se for qualquer outra (no caso, foto3), volta para a original
-    } else {
-        currentImageName = 'myfoto.png';
+
+//typerwriter
+
+const elemento=document.querySelector('.texto-animado');
+
+const frases=['Desenvolvedor Backend','Entusiasta Linux','Estudante De Ciências da computação ','Fã de C++']
+
+let indiceFrase=0;
+let indiceLetra=0;
+let textoatual=0;
+let letra='';
+
+
+
+function digitar(){
+    if(indiceFrase===frases.length){
+        indiceFrase=0;
     }
+
+    textoatual=frases[indiceFrase];
+
+    letra=textoatual.slice(0,++indiceLetra);
+
+    elemento.textContent=letra;
+
+    if(letra.length===textoatual.length){
+        // Se terminou a frase, espera 2 segundos, limpa e vai pra próxima
+            indiceFrase++;
+            indiceLetra = 0;
+            setTimeout(digitar, 2000); 
+        } else {
+            // Se não terminou, continua digitando rápido
+            setTimeout(digitar, 100); 
+        }
+    }
+
+    // Inicia a função
+    digitar();
+
+
     
-    // Aplica a mudança
-    myImageElement.src = currentImageName;
-}
+
+
+
+
+
+
+
+
+
+
